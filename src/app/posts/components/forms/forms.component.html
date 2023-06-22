@@ -1,0 +1,71 @@
+<div class="container py-5" *ngIf="!(post$ | async)">
+  <div class="p-2">
+    <h2 class="h2">Create new post</h2>
+  </div>
+  <div class="container d-flex justify-content-end">
+    <button class="btn btn-primary" (click)="goBack()">Back</button>
+  </div>
+  <div class="container">
+    <form [formGroup]="formPost" (submit)="addPost()">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          formControlName="title"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+        <textarea
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+          formControlName="body"
+        ></textarea>
+        <div id="passwordHelpBlock" class="form-text">Body is required</div>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="container py-5" *ngIf="post$ | async as post">
+  <div class="p-2">
+    <h2 class="h2">Update post</h2>
+  </div>
+  <div class="container d-flex justify-content-end">
+    <button class="btn btn-primary" (click)="goBack()">Back</button>
+  </div>
+  <div class="container">
+    <form>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          name="posttitle"
+          [(ngModel)]="post.title"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+        <textarea
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+          name="postbody"
+          [(ngModel)]="post.body"
+        ></textarea>
+        <div id="passwordHelpBlock" class="form-text">Body is required</div>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-primary" (click)="updatePost()">Update</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container py-5">
+  <div class="p-2">
+      <h2 class="h2">View Post</h2>
+  </div>
+  <div class="container d-flex justify-content-end">
+      <button class="btn btn-primary" (click)=" goBack()">Back</button>
+  </div>
+  <div class="container" *ngIf=" post$ | async as post">
+      <dl>
+          <dt>ID:</dt>
+          <dd>{{post.id}}</dd>
+
+          <dt>Title:</dt>
+          <dd>{{post.title}}</dd>
+
+          <dt>Body:</dt>
+          <dd>{{post.body}}</dd>
+        </dl>
+
+
+
+  </div>
+
+</div>
